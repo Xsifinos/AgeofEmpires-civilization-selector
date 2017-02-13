@@ -54,7 +54,6 @@ public class AgeofEmpires {
     public static void main(String[] args) {
         userinput();
         match();
-//        ui();
 //        sifis();
 //        test();
     }
