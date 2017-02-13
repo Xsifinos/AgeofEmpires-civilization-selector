@@ -2,7 +2,6 @@ package com.mycompany.helloworld;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  *
@@ -34,20 +33,8 @@ public class AgeofEmpires {
         int temp = random.nextInt(civilizations.size());
         return civilizations.get(temp);
     }
-//        return civilizations;
-//    }
-//
-//    public static void userinput() {
-//        Scanner scanner = new Scanner(System.in);
-//        String name = "";
-//        while (!name.equals("0")) {
-//            System.out.print("\t\t\tenter your username or press <<0>>\n\t\t\t=>");
-//            name = scanner.nextLine().trim();
-//            if (!name.equals("0")) {
-//                userlist.add(name);
-//            }
-//        }
-//    }
+}
+ 
 //
 //    public static void match() {
 //        ArrayList<String> fix = sifis();
@@ -64,5 +51,5 @@ public class AgeofEmpires {
 ////        sifis();
 ////        test();
 //    }
-}
-//    private static ArrayList<String> userlist = new ArrayList<String>();
+
+   
