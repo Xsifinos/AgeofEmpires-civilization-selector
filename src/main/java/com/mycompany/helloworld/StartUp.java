@@ -7,11 +7,12 @@ package com.mycompany.helloworld;
 public class StartUp {
 
     public static void main(String[] args) {
-        AgeofEmpires ageofEmpires = new AgeofEmpires();
-        while (true) {
+        ConsoleUI consoleUI = new ConsoleUI();
+        consoleUI.showUI();
+        for (String username : consoleUI.getUsernames()) {
+            AgeofEmpires ageofEmpires = new AgeofEmpires();
             String randomCivilization = ageofEmpires.getRandomCivilization();
-            System.out.println(randomCivilization);
+            System.out.println(username + ":" + randomCivilization);
         }
     }
-
 }

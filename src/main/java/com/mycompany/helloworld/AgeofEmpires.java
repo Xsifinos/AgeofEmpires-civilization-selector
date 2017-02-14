@@ -45,11 +45,12 @@ public class AgeofEmpires {
 //        }
 //    }
 //
-//    public static void main(String[] args) {
-//        userinput();
-//        match();
-////        sifis();
-////        test();
-//    }
-
+// 
+//for (int i = 0; i < consoleUI.getUsernames().size(); i++){
+//            String username = consoleUI.getUsernames().get(i);
+//            
+//            AgeofEmpires ageofEmpires = new AgeofEmpires();
+//            String randomCivilization = ageofEmpires.getRandomCivilization();
+//            System.out.println(username + ":" + randomCivilization);
+//        }
    
