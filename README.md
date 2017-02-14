@@ -1,1 +1,1 @@
-echo "# AgeofEmpires-civilization-selector" >>
+"# AgeofEmpires-civilization-selector"
