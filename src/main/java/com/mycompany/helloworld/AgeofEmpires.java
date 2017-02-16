@@ -3,11 +3,10 @@ package com.mycompany.helloworld;
 import java.util.ArrayList;
 import java.util.Random;
 
-    /**
-     * @author sifis 
-     * Contains a list of civilizations and returns a random
-     * civilization.
-     */
+/**
+ * @author sifis Contains a list of civilizations and returns a random
+ * civilization.
+ */
 public class AgeofEmpires {
 
     /**
@@ -46,6 +45,7 @@ public class AgeofEmpires {
      * @return random civilization
      */
     public String getRandomCivilization() {
+
         // Get a random number to use to get a random civilization.
         Random random = new Random();
         int temp = random.nextInt(civilizations.size());
@@ -53,9 +53,24 @@ public class AgeofEmpires {
         // Return a random civilization.
         return civilizations.get(temp);
     }
-}
 
-//
+    /**
+     *
+     * @param allowduplicates set true in case you allow duplicates. False in
+     * case you deny duplicates.
+     * @return
+     */
+    public String getRandomCivilization(boolean allowduplicates) {
+        Random random = new Random();
+        int temp = random.nextInt(civilizations.size());
+        String civil = civilizations.get(temp);
+        if (!allowduplicates) {
+            civilizations.remove(temp);
+        }
+        return civil;
+    }
+}
+////////////////////////////////////////////////////////
 //    public static void match() {
 //        ArrayList<String> fix = sifis();
 //       
