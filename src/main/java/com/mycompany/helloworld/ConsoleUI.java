@@ -23,13 +23,47 @@ public class ConsoleUI {
 
     //Declares boolean variable.
     private Boolean allowduplicatebool;
-    
+
     /**
      * Initialize the list of usernames.
      */
     public ConsoleUI() {
-        this.usernames = new ArrayList<String>();
+        this.usernames = new ArrayList<>();
         this.allowduplicatebool = true;
+    }
+
+    public void menuUI() {
+        Scanner scanner = new Scanner(System.in);
+        String name = "";
+        while (!name.equals("4")) {
+            System.out.println("#######################################################");
+            System.out.println("####### AGE OF EMPIRES-CIVILIZATION-SELECTOR ##########");
+            System.out.println("#######################################################");
+            System.out.println("# 1.#    Allow duplicate(default true).             ###");
+            System.out.println("# 2.#    Enter username.                            ###");
+            System.out.println("# 3.#    Show list of usernames with civilizations. ###");
+            System.out.println("# 4.#    Exit.                                      ###");
+            System.out.println("#######################################################");
+
+            name = scanner.nextLine().trim();
+            if (name.equals("3")) {
+                System.out.println("You have no entries!!!");
+            } else {
+                switch (name) {
+                    case "1":
+                        allowDuplicateUI();
+                        break;
+
+                    case "2":
+                        showUI();
+                        break;
+
+                    case "3":
+                        showUsernameWithCivilization();
+                        break;
+                }
+            }
+        }
     }
 
     /**
@@ -37,22 +71,10 @@ public class ConsoleUI {
      * list.
      */
     //Declares boolean variable to use to duplicate or not.
-    
-
     public void showUI() {
         // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
         String name = "";
-        String allowduplicate = "";
-
-        //Get the user input to allow duplicate or not. 
-        System.out.println("Do you want to exist civilizations in duplicate?Yes=1 No=0");
-        allowduplicate = scanner.nextLine();
-        if (allowduplicate.equals("1")) {
-            allowduplicatebool = true;
-        } else if (allowduplicate.equals("0")) {
-            allowduplicatebool = false;
-        }
 
         while (!name.equals("0")) {
             // Get the user input each time is not pressed "0".  
@@ -66,13 +88,27 @@ public class ConsoleUI {
         }
     }
 
-    /**
-     * Returns list of usernames.
-     *
-     * @return List of usernames.
-     */
-    public ArrayList<String> getUsernames() {
-        return usernames;
+    private void allowDuplicateUI() {
+        //Get the user input to allow duplicate or not.
+        Scanner scanner = new Scanner(System.in);
+        String allowduplicate = "";
+        System.out.println("Do you want to exist civilizations in duplicate?Yes=1 No=0");
+        allowduplicate = scanner.nextLine();
+        if (allowduplicate.equals("1")) {
+            allowduplicatebool = true;
+        } else if (allowduplicate.equals("0")) {
+            allowduplicatebool = false;
+        }
+    }
+
+    private void showUsernameWithCivilization() {
+        AgeofEmpires ageofEmpires = new AgeofEmpires();
+        // Corresponds each username of the list of usernames
+        // to a random civilization.
+        for (String username : usernames) {
+            String randomCivilization = ageofEmpires.getRandomCivilization(allowduplicatebool);
+            System.out.println(username + ":" + randomCivilization);
+        }
     }
 
     public Boolean getAllowduplicatebool() {
