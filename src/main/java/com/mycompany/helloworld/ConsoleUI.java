@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.helloworld;
 
 import java.util.ArrayList;
@@ -25,7 +20,7 @@ public class ConsoleUI {
     private Boolean allowduplicatebool;
 
     /**
-     * Initialize the list of usernames.
+     * Initialize the userslist and the boolean variable.
      */
     public ConsoleUI() {
         this.userslist = new ArrayList<User>();
@@ -33,6 +28,8 @@ public class ConsoleUI {
     }
 
     public void menuUI() {
+        
+        // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
         String name = "";
         while (!name.equals("4")) {
@@ -40,22 +37,27 @@ public class ConsoleUI {
             System.out.println("####### AGE OF EMPIRES-CIVILIZATION-SELECTOR ##########");
             System.out.println("#######################################################");
             System.out.println("# 1.#    Allow duplicate(default true).             ###");
-            System.out.println("# 2.#    Management of users.                       ###");
+            System.out.println("# 2.#    Management of the users.                   ###");
             System.out.println("# 3.#    Show list of usernames with civilizations. ###");
             System.out.println("# 4.#    Exit.                                      ###");
             System.out.println("#######################################################");
 
             name = scanner.nextLine().trim();
+            
+            //Choices of the user.
             switch (name) {
                 case "1":
+                    //Allow duplication or not.
                     allowDuplicateUI();
                     break;
 
                 case "2":
+                    //Access to the management of users menu.
                     menu2UI();
                     break;
 
                 case "3":
+                    //Show the list of usernames with civilizations.
                     showUsernameWithCivilization();
                     break;
             }
@@ -66,7 +68,6 @@ public class ConsoleUI {
      * Requests for usernames until breaks with "0" and add the usernames into a
      * list.
      */
-    //Declares boolean variable to use to duplicate or not.
     public void menu2UI() {
         // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
@@ -76,6 +77,8 @@ public class ConsoleUI {
         while (!name.equals("4")) {
             System.out.println("#######################################################");
             System.out.println("####### AGE OF EMPIRES-CIVILIZATION-SELECTOR ##########");
+            System.out.println("#######      (Management of the users.)      ##########");
+            System.out.println("#######################################################");
             System.out.println("#######################################################");
             System.out.println("# 1.#    Create player.                             ###");
             System.out.println("# 2.#    Delete player.                             ###");
@@ -84,13 +87,17 @@ public class ConsoleUI {
             System.out.println("#######################################################");
             name = scanner.nextLine().trim();
             switch (name) {
+                //Choices of the user.
                 case "1":
-                    create();
+                    //Create users and add them to the list of users.
+                    createUser();
                     break;
                 case "2":
-                    delete();
+                    //Find the user and delete it.
+                    deleteUser();
                     break;
                 case "3":
+                    //Show the list of players with names and usernames.
                     showListofPlayers();
                     break;
             }
@@ -111,47 +118,51 @@ public class ConsoleUI {
     }
 
     private void showUsernameWithCivilization() {
+        //Print message when userslist is empty.
         if (this.userslist.isEmpty()) {
             System.out.println("You have no entries!!!");
             return;
         }
         AgeofEmpires ageofEmpires = new AgeofEmpires();
-        // Corresponds each username of the list of usernames
-        // to a random civilization.
-        for (User username : userslist) {
+        // Correspond each user of the list of users
+        // to a random civilization and print it.
+        for (User user : userslist) {
             String randomCivilization = ageofEmpires.getRandomCivilization(allowduplicatebool);
-            System.out.println(username + ":" + randomCivilization);
+            System.out.println(user + ":" + randomCivilization);
         }
     }
 
     public Boolean getAllowduplicatebool() {
+        //Boolean variable for duplicate or not.
         return allowduplicatebool;
     }
 
-    public void create() {
+    public void createUser() {
+        // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
         String name = "";
         String username = "";
         User user = new User();
 
-//        while (!name.equals("0")) {
-        // Get the user input each time is not pressed "0". 
         System.out.print("\t\t\tenter your name\n\t\t\t=>");
         name = scanner.nextLine().trim();
         System.out.print("\t\t\tenter your username\n\t\t\t=>");
         username = scanner.nextLine().trim();
+
+        //Get the user input to set the values.
         user.setName(name);
         user.setUsername(username);
-        //Add each username into the list.
+        //Add the user into the list.
         userslist.add(user);
-//        }
     }
 
-    public void delete() {
+    public void deleteUser() {
+        // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
         String name = "";
         System.out.print("\t\t\tenter name you want to delete\n\t\t\t=>");
         name = scanner.nextLine().trim();
+        //Find the user and delete it from the list.
         for (User user : userslist) {
             if (name.equals(user.getName())) {
                 userslist.remove(user);
@@ -163,6 +174,7 @@ public class ConsoleUI {
 
     private void showListofPlayers() {
 
+        //Show the list of the users.
         for (User user : userslist) {
             System.out.println(user);
         }

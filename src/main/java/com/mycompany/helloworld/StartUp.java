@@ -1,20 +1,39 @@
 package com.mycompany.helloworld;
 
 /**
- * @author sifis Contains the main method.
+ * @author sifis 
+ * Contains the main method.
  */
 public class StartUp {
 
-    /**
-     * Requests from the user to enter a username until breaks with "0".
-     * Corresponds each username to a random civilization.
-     *
-     * @param args
-     */
     public static void main(String[] args) {
-        // Requests from the user a username.
         ConsoleUI consoleUI = new ConsoleUI();
         consoleUI.menuUI();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////
 //        User user=new User();
 //        user.editUser();
 //        Boolean allowduplicatebool = consoleUI.getAllowduplicatebool();
