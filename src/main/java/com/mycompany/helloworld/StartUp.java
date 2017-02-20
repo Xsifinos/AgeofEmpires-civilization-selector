@@ -14,8 +14,9 @@ public class StartUp {
     public static void main(String[] args) {
         // Requests from the user a username.
         ConsoleUI consoleUI = new ConsoleUI();
-//        String name = consoleUI.getName();
         consoleUI.menuUI();
+//        User user=new User();
+//        user.editUser();
 //        Boolean allowduplicatebool = consoleUI.getAllowduplicatebool();
 //        AgeofEmpires ageofEmpires = new AgeofEmpires();
 //        // Corresponds each username of the list of usernames
