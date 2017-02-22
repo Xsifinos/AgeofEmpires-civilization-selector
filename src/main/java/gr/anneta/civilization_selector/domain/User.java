@@ -1,4 +1,4 @@
-package com.mycompany.helloworld;
+package gr.anneta.civilization_selector.domain;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,43 +9,44 @@ import java.util.Scanner;
  */
 public class User {
 
-    //Declares variable name.            
     private String name;
 
-    //Declares variable username.
     private String username;
 
-    //Empty constructor.
     public User() {
     }
 
-    //Initialization with arguments.
     public User(String name, String username) {
     }
 
-    //Set the value in variable.
     public void setName(String name) {
+
+        // Set the value in variable.
         this.name = name;
     }
 
-    //Set the value in variable.
     public void setUsername(String username) {
+
+        // Set the value in variable.
         this.username = username;
     }
 
-    //Get the value of variable. 
     public String getName() {
+
+        // Get the value of variable. 
         return name;
     }
 
-    //Get the value of variable. 
     public String getUsername() {
+
+        // Get the value of variable. 
         return username;
     }
 
-    //Convert the object to string.
     @Override
     public String toString() {
+
+        // Convert the user object to string name and username.
         return "(Name):" + this.name + " " + "(Username):" + this.username;
     }
 }

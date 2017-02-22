@@ -1,14 +1,15 @@
-package com.mycompany.helloworld;
+package gr.anneta.civilization_selector;
 
 /**
- * @author sifis 
- * Contains the main method.
+ * @author sifis Contains the main method.
  */
 public class StartUp {
 
     public static void main(String[] args) {
         ConsoleUI consoleUI = new ConsoleUI();
         consoleUI.menuUI();
+    }
+}
 
 
 
@@ -16,24 +17,6 @@ public class StartUp {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////
 //        User user=new User();
 //        user.editUser();
 //        Boolean allowduplicatebool = consoleUI.getAllowduplicatebool();
@@ -44,5 +27,3 @@ public class StartUp {
 //                String randomCivilization = ageofEmpires.getRandomCivilization(allowduplicatebool);
 //                System.out.println(username + ":" + randomCivilization);
 //            }
-        }
-}

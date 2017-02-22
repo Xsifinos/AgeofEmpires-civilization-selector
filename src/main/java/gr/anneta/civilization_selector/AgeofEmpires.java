@@ -1,4 +1,4 @@
-package com.mycompany.helloworld;
+package gr.anneta.civilization_selector;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -77,7 +77,7 @@ public class AgeofEmpires {
 
 
 
-///////////////////////////////////////////////////////////////
+
 //    public static void match() {
 //        ArrayList<String> fix = sifis();
 //       
