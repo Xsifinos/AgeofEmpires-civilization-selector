@@ -46,17 +46,21 @@ public class CivilizationService {
 //    
 
     public boolean delete(String title) {
-        boolean civilisDeleted = false;
+        boolean isDeleted = false;
         for (Civilization civilization : civilizations) {
             if (title.equals(civilization.getTitle())) {
                 civilizations.remove(civilization);
-                civilisDeleted = true;
+                isDeleted = true;
                 break;
             }
         }
-        return civilisDeleted;
+        return isDeleted;
     }
 
+     public boolean isEmpty() {
+        return civilizations.isEmpty();
+    }
+     
     public List<Civilization> find() {
         List<Civilization> civilsClone = new ArrayList<>(this.civilizations);
         return civilsClone;
