@@ -62,7 +62,7 @@ public class PlayerService {
     }
 
     public List<Player> find() {
-        List<Player> playersClone = new ArrayList<>(this.userslist);
+        List<Player> playersClone = new ArrayList<>(this.playerslist);
         return playersClone;
     }
 }
