@@ -19,20 +19,20 @@ public class ConsoleUI {
     /**
      * Declares a list of usernames.
      */
-    private UserService userservice;
+    private UserService userService;
 
-    private CivilizationService civilizationservice;
+    private CivilizationService civilizationService;
 
     // Declares boolean variable.
-    private Boolean allowduplicatebool;
+    private Boolean allowDuplicatebool;
 
     /**
      * Initialize the boolean variable.
      */
     public ConsoleUI() {
-        this.userservice = new UserService();
-        this.civilizationservice = new CivilizationService();
-        this.allowduplicatebool = true;
+        this.userService = new UserService();
+        this.civilizationService = new CivilizationService();
+        this.allowDuplicatebool = true;
     }
 
     public void menuUI() {
@@ -85,28 +85,27 @@ public class ConsoleUI {
         System.out.println("Do you want to exist civilizations in duplicate?Yes=1 No=0");
         allowduplicate = scanner.nextLine();
         if (allowduplicate.equals("1")) {
-            allowduplicatebool = true;
+            allowDuplicatebool = true;
         } else if (allowduplicate.equals("0")) {
-            allowduplicatebool = false;
+            allowDuplicatebool = false;
         }
     }
 
     public Boolean getAllowduplicatebool() {
         // Boolean variable for duplicate or not.
-        return allowduplicatebool;
+        return allowDuplicatebool;
     }
 
     private void showUsernameWithCivilization() {
         // Print message when userslist is empty.
-        if (userservice.isEmpty()) {
-            System.out.println("You have no entries!!!");
+        if (userService.isEmpty() || civilizationService.isEmpty() ) {
+            System.out.println("You haven't entered usernames or civivilizations!!!");
             return;
         }
-        AgeofEmpires ageofEmpires = new AgeofEmpires();
         // Correspond each user of the list of users
         // to a random civilization and print it.
-        for (User user : userservice.find()) {
-            String randomCivilization = ageofEmpires.getRandomCivilization(allowduplicatebool);
+        for (User user : userService.find()) {
+            Civilization randomCivilization = civilizationService.getRandomCivilization(allowDuplicatebool);
             System.out.println(user + ":" + randomCivilization);
         }
     }
@@ -120,7 +119,6 @@ public class ConsoleUI {
             System.out.println("#######################################################");
             System.out.println("####### AGE OF EMPIRES-CIVILIZATION-SELECTOR ##########");
             System.out.println("#######      (Management of the users.)      ##########");
-            System.out.println("#######################################################");
             System.out.println("#######################################################");
             System.out.println("# 1.#    Create player.                             ###");
             System.out.println("# 2.#    Delete player.                             ###");
@@ -162,7 +160,7 @@ public class ConsoleUI {
         user.setUsername(username);
 
         // Create a user.
-        userservice.create(user);
+        userService.create(user);
     }
 
     public void deleteUser() {
@@ -172,7 +170,7 @@ public class ConsoleUI {
         String name = scanner.nextLine().trim();
 //        User user = userservice.delete(name);
 //        if (user == null) {
-        if (!userservice.delete(name)) {
+        if (!userService.delete(name)) {
             System.out.println("O xristis den vrethike.");
         }
     }
@@ -180,12 +178,12 @@ public class ConsoleUI {
     private void showListofPlayers() {
 
         // Print message when userslist is empty.
-        if (userservice.isEmpty()) {
+        if (userService.isEmpty()) {
             System.out.println("You have no entries!!!");
             return;
         }
         // Show the list of the users.
-        for (User user : userservice.find()) {
+        for (User user : userService.find()) {
             System.out.println(user);
         }
     }
@@ -195,16 +193,16 @@ public class ConsoleUI {
         Scanner scanner = new Scanner(System.in);
         String name = "";
 
-        while (!name.equals("4")) {
+        while (!name.equals("5")) {
             System.out.println("#######################################################");
             System.out.println("####### AGE OF EMPIRES-CIVILIZATION-SELECTOR ##########");
             System.out.println("#######  (Management of the civilizations.)  ##########");
             System.out.println("#######################################################");
-            System.out.println("#######################################################");
             System.out.println("# 1.#    Create civilization.                       ###");
             System.out.println("# 2.#    Delete civilization.                       ###");
-            System.out.println("# 3.#    Show list of civilizations.                ###");
-            System.out.println("# 4.#    Return to the previous menu.               ###");
+            System.out.println("# 3.#    Auto insertion of civilizations.           ###");
+            System.out.println("# 4.#    Show list of civilizations.                ###");
+            System.out.println("# 5.#    Return to the previous menu.               ###");
             System.out.println("#######################################################");
             name = scanner.nextLine().trim();
             switch (name) {
@@ -218,8 +216,11 @@ public class ConsoleUI {
                     deleteCivil();
                     break;
                 case "3":
+                    autoInsertion();
+                    break;
+                case "4":
                     // Show the list of players with names and usernames.
-                    showListofCivilizations();
+                    showListCivilizations();
                     break;
             }
         }
@@ -238,7 +239,7 @@ public class ConsoleUI {
         civilization.setTitle(title);
 
         // Create a civilization.
-        civilizationservice.create(civilization);
+        civilizationService.create(civilization);
     }
 
     public void deleteCivil() {
@@ -247,20 +248,28 @@ public class ConsoleUI {
         System.out.print("\t\t\tEnter the title of the civilization you want to delete.\n\t\t\t=>");
         String title = scanner.nextLine().trim();
 
-        if (!civilizationservice.delete(title)) {
+        if (!civilizationService.delete(title)) {
             System.out.println("O laos den vrethike.");
         }
     }
 
-    private void showListofCivilizations() {
+    public void autoInsertion() {
+        // Scanner to use for getting the inputs from console.
+        civilizationService.createAllCivilizations();
+
+        System.out.println("Oi laoi kataxwrhthikan.");
+        return; 
+    }
+
+    private void showListCivilizations() {
 
         // Print message when userslist is empty.
-        if (civilizationservice.isEmpty()) {
+        if (civilizationService.isEmpty()) {
             System.out.println("You have no entries!!!");
             return;
         }
         // Show the list of the civilizations.
-        for (Civilization civilization : civilizationservice.find()) {
+        for (Civilization civilization : civilizationService.find()) {
             System.out.println(civilization);
         }
     }
