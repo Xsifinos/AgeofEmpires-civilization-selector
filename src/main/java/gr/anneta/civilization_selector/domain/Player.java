@@ -7,16 +7,16 @@ import java.util.Scanner;
  *
  * @author sifis
  */
-public class User {
+public class Player {
 
     private String name;
 
     private String username;
 
-    public User() {
+    public Player() {
     }
 
-    public User(String name, String username) {
+    public Player(String name, String username) {
     }
 
     public void setName(String name) {

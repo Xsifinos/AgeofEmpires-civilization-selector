@@ -1,5 +1,7 @@
 package gr.anneta.civilization_selector;
 
+import gr.anneta.civilization_selector.controller.ConsoleUI;
+
 /**
  * @author sifis Contains the main method.
  */

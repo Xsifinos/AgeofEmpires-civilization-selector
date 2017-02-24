@@ -1,8 +1,8 @@
-package gr.anneta.civilization_selector;
+package gr.anneta.civilization_selector.controller;
 
 import gr.anneta.civilization_selector.domain.Civilization;
-import gr.anneta.civilization_selector.service.UserService;
-import gr.anneta.civilization_selector.domain.User;
+import gr.anneta.civilization_selector.service.PlayerService;
+import gr.anneta.civilization_selector.domain.Player;
 import gr.anneta.civilization_selector.service.CivilizationService;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class ConsoleUI {
     /**
      * Declares a list of usernames.
      */
-    private UserService userService;
+    private PlayerService playerService;
 
     private CivilizationService civilizationService;
 
@@ -30,7 +30,7 @@ public class ConsoleUI {
      * Initialize the boolean variable.
      */
     public ConsoleUI() {
-        this.userService = new UserService();
+        this.playerService = new PlayerService();
         this.civilizationService = new CivilizationService();
         this.allowDuplicatebool = true;
     }
@@ -45,7 +45,7 @@ public class ConsoleUI {
             System.out.println("####### AGE OF EMPIRES-CIVILIZATION-SELECTOR ##########");
             System.out.println("#######################################################");
             System.out.println("# 1.#    Allow duplicate(default true).             ###");
-            System.out.println("# 2.#    Management of the users.                   ###");
+            System.out.println("# 2.#    Management of the players.                 ###");
             System.out.println("# 3.#    Management of the civilizations.           ###");
             System.out.println("# 4.#    Show list of usernames with civilizations. ###");
             System.out.println("# 5.#    Exit.                                      ###");
@@ -53,7 +53,7 @@ public class ConsoleUI {
 
             name = scanner.nextLine().trim();
 
-            // Choices of the user.
+            // Choices of the player.
             switch (name) {
                 case "1":
                     // Allow duplication or not.
@@ -61,12 +61,12 @@ public class ConsoleUI {
                     break;
 
                 case "2":
-                    // Access to the management of users menu.
-                    menuUserUI();
+                    // Access to the management of the players menu.
+                    menuPlayerUI();
                     break;
 
                 case "3":
-                    // Access to the management of civilizations menu.
+                    // Access to the management of the civilizations menu.
                     menuCivilUI();
                     break;
 
@@ -98,19 +98,19 @@ public class ConsoleUI {
 
     private void showUsernameWithCivilization() {
         // Print message when userslist is empty.
-        if (userService.isEmpty() || civilizationService.isEmpty() ) {
+        if (playerService.isEmpty() || civilizationService.isEmpty() ) {
             System.out.println("You haven't entered usernames or civivilizations!!!");
             return;
         }
         // Correspond each user of the list of users
         // to a random civilization and print it.
-        for (User user : userService.find()) {
+        for (Player player : playerService.find()) {
             Civilization randomCivilization = civilizationService.getRandomCivilization(allowDuplicatebool);
-            System.out.println(user + ":" + randomCivilization);
+            System.out.println(player + ":" + randomCivilization);
         }
     }
 
-    public void menuUserUI() {
+    public void menuPlayerUI() {
         // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
         String name = "";
@@ -118,7 +118,7 @@ public class ConsoleUI {
         while (!name.equals("4")) {
             System.out.println("#######################################################");
             System.out.println("####### AGE OF EMPIRES-CIVILIZATION-SELECTOR ##########");
-            System.out.println("#######      (Management of the users.)      ##########");
+            System.out.println("#######      (Management of the players.)    ##########");
             System.out.println("#######################################################");
             System.out.println("# 1.#    Create player.                             ###");
             System.out.println("# 2.#    Delete player.                             ###");
@@ -127,24 +127,24 @@ public class ConsoleUI {
             System.out.println("#######################################################");
             name = scanner.nextLine().trim();
             switch (name) {
-                // Choices of the user.
+                // Choices of the player.
                 case "1":
-                    // Create users and add them to the list of users.
-                    createUser();
+                    // Create players and add them to the list of the players.
+                    createPlayer();
                     break;
                 case "2":
-                    // Find the user and delete it.
-                    deleteUser();
+                    // Find the player and delete him.
+                    deletePlayer();
                     break;
                 case "3":
                     // Show the list of players with names and usernames.
-                    showListofPlayers();
+                    showListPlayers();
                     break;
             }
         }
     }
 
-    public void createUser() {
+    public void createPlayer() {
         // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
 
@@ -155,36 +155,36 @@ public class ConsoleUI {
         String username = scanner.nextLine().trim();
 
         // Set the name and the username.
-        User user = new User();
-        user.setName(name);
-        user.setUsername(username);
+        Player player = new Player();
+        player.setName(name);
+        player.setUsername(username);
 
-        // Create a user.
-        userService.create(user);
+        // Create a player.
+        playerService.create(player);
     }
 
-    public void deleteUser() {
+    public void deletePlayer() {
         // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
         System.out.print("\t\t\tenter name you want to delete\n\t\t\t=>");
         String name = scanner.nextLine().trim();
-//        User user = userservice.delete(name);
-//        if (user == null) {
-        if (!userService.delete(name)) {
+//        Player player = playerService.delete(name);
+//        if (player == null) {
+        if (!playerService.delete(name)) {
             System.out.println("O xristis den vrethike.");
         }
     }
 
-    private void showListofPlayers() {
+    private void showListPlayers() {
 
-        // Print message when userslist is empty.
-        if (userService.isEmpty()) {
+        // Print message when playerslist is empty.
+        if (playerService.isEmpty()) {
             System.out.println("You have no entries!!!");
             return;
         }
-        // Show the list of the users.
-        for (User user : userService.find()) {
-            System.out.println(user);
+        // Show the list of the players.
+        for (Player player : playerService.find()) {
+            System.out.println(player);
         }
     }
 
@@ -206,20 +206,21 @@ public class ConsoleUI {
             System.out.println("#######################################################");
             name = scanner.nextLine().trim();
             switch (name) {
-                // Choices of the user.
+                // Choices of the player.
                 case "1":
-                    // Create users and add them to the list of users.
+                    // Create civilizations and add them to the list of civilizations .
                     createCivil();
                     break;
                 case "2":
-                    // Find the user and delete it.
+                    // Find the civilization and delete it.
                     deleteCivil();
                     break;
                 case "3":
+                    // Insert automatical 18 civilizations.
                     autoInsertion();
                     break;
                 case "4":
-                    // Show the list of players with names and usernames.
+                    // Show the list of the civilizations with names and usernames.
                     showListCivilizations();
                     break;
             }
@@ -263,7 +264,7 @@ public class ConsoleUI {
 
     private void showListCivilizations() {
 
-        // Print message when userslist is empty.
+        // Print message when civilizations list is empty.
         if (civilizationService.isEmpty()) {
             System.out.println("You have no entries!!!");
             return;
