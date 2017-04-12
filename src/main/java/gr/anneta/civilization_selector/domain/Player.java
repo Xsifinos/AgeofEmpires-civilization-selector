@@ -1,7 +1,6 @@
 package gr.anneta.civilization_selector.domain;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Objects;
 
 /**
  *
@@ -14,21 +13,30 @@ public class Player {
     private String username;
 
     public Player() {
+        this.name = name;
+        this.username = username;
     }
 
     public Player(String name, String username) {
+        this.name = name;
+        this.username = username;
     }
 
     public void setName(String name) {
 
+        if (name != null) {
+            this.name = name.replace(" ","");
+        }
         // Set the value in variable.
         this.name = name;
     }
 
     public void setUsername(String username) {
 
-        // Set the value in variable.
-        this.username = username;
+        if (username != null) {
+            // Set the value in variable.
+            this.username = username.replace(" ","");
+        }
     }
 
     public String getName() {
@@ -49,4 +57,26 @@ public class Player {
         // Convert the user object to string name and username.
         return "(Name):" + this.name + " " + "(Username):" + this.username;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Player)) {
+            return false;
+        }
+
+        Player playerToCheck = (Player) obj;
+        if (this.username.equals(playerToCheck.getUsername())) {
+            return true;
+        }
+
+        return false;
+    }
+
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(this.username);
+//    }
 }

@@ -77,7 +77,7 @@ public class CivilizationService {
         List<Civilization> civilsClone = new ArrayList<>(this.civilizations);
         return civilsClone;
     }
-    
+
     /**
      *
      * @param allowduplicates set true in case you allow duplicates. False in
@@ -89,12 +89,11 @@ public class CivilizationService {
         int temp = random.nextInt(civilizations.size());
         Civilization civilization = civilizations.get(temp);
         if (!allowduplicates) {
-            civilizations.remove(temp);
+                civilizations.remove(temp);
         }
         return civilization;
     }
 }
-
 
 //for (int i = 0; i < consoleUI.getUsernames().size(); i++){
 //            String username = consoleUI.getUsernames().get(i);

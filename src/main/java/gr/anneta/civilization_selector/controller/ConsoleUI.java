@@ -3,22 +3,20 @@ package gr.anneta.civilization_selector.controller;
 import gr.anneta.civilization_selector.domain.Civilization;
 import gr.anneta.civilization_selector.service.PlayerService;
 import gr.anneta.civilization_selector.domain.Player;
+import gr.anneta.civilization_selector.lib.SifinosException;
 import gr.anneta.civilization_selector.service.CivilizationService;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- * Makes a request for username until breaks with "0".Then creates a list of
- * usernames.
- *
  * @author sifis
  */
 public class ConsoleUI {
 
-    /**
-     * Declares a list of usernames.
-     */
     private PlayerService playerService;
 
     private CivilizationService civilizationService;
@@ -27,7 +25,7 @@ public class ConsoleUI {
     private Boolean allowDuplicatebool;
 
     /**
-     * Initialize the boolean variable.
+     * Initialize the variables.
      */
     public ConsoleUI() {
         this.playerService = new PlayerService();
@@ -35,7 +33,7 @@ public class ConsoleUI {
         this.allowDuplicatebool = true;
     }
 
-    public void menuUI() {
+    public void menuUI() throws IOException {
 
         // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
@@ -96,13 +94,13 @@ public class ConsoleUI {
         return allowDuplicatebool;
     }
 
-    private void showUsernameWithCivilization() {
-        // Print message when userslist is empty.
-        if (playerService.isEmpty() || civilizationService.isEmpty() ) {
+    private void showUsernameWithCivilization() throws IOException {
+        // Print message when playerlist or list of civilizations are empties.
+        if (playerService.isEmpty() || civilizationService.isEmpty()) {
             System.out.println("You haven't entered usernames or civivilizations!!!");
             return;
         }
-        // Correspond each user of the list of users
+        // Correspond each player of the list of players
         // to a random civilization and print it.
         for (Player player : playerService.find()) {
             Civilization randomCivilization = civilizationService.getRandomCivilization(allowDuplicatebool);
@@ -110,7 +108,7 @@ public class ConsoleUI {
         }
     }
 
-    public void menuPlayerUI() {
+    public void menuPlayerUI() throws IOException {
         // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
         String name = "";
@@ -150,32 +148,36 @@ public class ConsoleUI {
 
         // Get the user input to set the values.
         System.out.print("\t\t\tenter your name\n\t\t\t=>");
-        String name = scanner.nextLine().trim();
+        String name = scanner.nextLine();
         System.out.print("\t\t\tenter your username\n\t\t\t=>");
-        String username = scanner.nextLine().trim();
+        String username = scanner.nextLine();
 
         // Set the name and the username.
         Player player = new Player();
         player.setName(name);
         player.setUsername(username);
 
-        // Create a player.
-        playerService.create(player);
+        try {
+            // Create a player.
+            playerService.create(player);
+        } catch (SifinosException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public void deletePlayer() {
         // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
-        System.out.print("\t\t\tenter name you want to delete\n\t\t\t=>");
-        String name = scanner.nextLine().trim();
-//        Player player = playerService.delete(name);
-//        if (player == null) {
-        if (!playerService.delete(name)) {
-            System.out.println("O xristis den vrethike.");
+        System.out.print("\t\t\tenter the username of the player you want to delete\n\t\t\t=>");
+        String username = scanner.nextLine();
+        try {
+            playerService.delete(username);
+        } catch (SifinosException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
-    private void showListPlayers() {
+    private void showListPlayers() throws IOException {
 
         // Print message when playerslist is empty.
         if (playerService.isEmpty()) {
@@ -220,7 +222,7 @@ public class ConsoleUI {
                     autoInsertion();
                     break;
                 case "4":
-                    // Show the list of the civilizations with names and usernames.
+                    // Show the list of the civilizations.
                     showListCivilizations();
                     break;
             }
@@ -233,7 +235,7 @@ public class ConsoleUI {
 
         // Get the user input to set the values.
         System.out.print("\t\t\tenter the title of the civilization\n\t\t\t=>");
-        String title = scanner.nextLine().trim();
+        String title = scanner.nextLine();
 
         // Set the title.
         Civilization civilization = new Civilization();
@@ -247,7 +249,7 @@ public class ConsoleUI {
         // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
         System.out.print("\t\t\tEnter the title of the civilization you want to delete.\n\t\t\t=>");
-        String title = scanner.nextLine().trim();
+        String title = scanner.nextLine();
 
         if (!civilizationService.delete(title)) {
             System.out.println("O laos den vrethike.");
@@ -259,7 +261,7 @@ public class ConsoleUI {
         civilizationService.createAllCivilizations();
 
         System.out.println("Oi laoi kataxwrhthikan.");
-        return; 
+        return;
     }
 
     private void showListCivilizations() {
