@@ -1,16 +1,31 @@
 package gr.anneta.civilization_selector;
 
-import gr.anneta.civilization_selector.controller.ConsoleUI;
 import java.io.IOException;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * @author sifis Contains the main method.
  */
-public class StartUp {
+public class StartUp extends Application {
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/MainView.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("/files/css/common.css");
+        stage.setTitle("Age of Empires Civilization Selector - Main");
+        stage.setScene(scene);
+        stage.show();
+    }
 
     public static void main(String[] args) throws IOException {
-        ConsoleUI consoleUI = new ConsoleUI();
-        consoleUI.menuUI();
+        launch(args);
+//        ConsoleUI consoleUI = new ConsoleUI();
+//        consoleUI.menuUI();
     }
 }
 

@@ -1,0 +1,18 @@
+.root {
+    -fx-background-image: url("../images/main-background.jpg");
+    -fx-background-position: center center;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+}
+
+.label {
+    -fx-wrap-text: true;
+}
+
+.label-title {
+    -fx-font-size: 20px;
+}
+
+.label-description {
+    -fx-font-size: 11px;
+}

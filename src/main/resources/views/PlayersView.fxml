@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+
+<VBox prefWidth="500.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gr.anneta.civilization_selector.controller.PlayersController">
+   <children>
+        <Label fx:id="Title" styleClass="label-title" text="Διαχείριση Παικτών" VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="Subtitle" styleClass="label-description" text="Σε αυτό το μενού μπορείτε να προσθέσετε,επεξεργαστείτε ή διαγράψετε παίκτες." VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="10.0" />
+         </font>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Label>
+      <TableView fx:id="table" VBox.vgrow="ALWAYS">
+        <columns>
+          <TableColumn id="name" fx:id="nameCol" maxWidth="-1.0" minWidth="-1.0" prefWidth="229.0" text="Name" />
+          <TableColumn id="username" fx:id="usernameCol" maxWidth="-1.0" minWidth="-1.0" prefWidth="229.0" text="Username" />
+        </columns>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TableView>
+      <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="10.0">
+         <children>
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#delete" text="Διαγραφή">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#edit" text="Επεξεργασία">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutX="291.0" layoutY="10.0" mnemonicParsing="false" onAction="#create" text="Δημιουργία" />
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT">
+         <children>
+            <Button alignment="CENTER_RIGHT" onAction="#close" text="Κλείσιμο" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <stylesheets>
+    <URL value="@../../files/css/common.css" />
+  </stylesheets>
+</VBox>

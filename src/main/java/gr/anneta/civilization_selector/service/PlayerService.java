@@ -28,7 +28,7 @@ public class PlayerService {
         }
         // Business rules.
         if (player.getName() == null || player.getUsername() == null) {
-            throw new SifinosException("WARNING : Null! Please enter the username.");
+            throw new SifinosException("WARNING : Null! Please enter the name.");
         }
         if (player.getName().trim().isEmpty() || player.getUsername().trim().isEmpty()) {
             throw new SifinosException("WARNING : Empty space! Please enter the username.");

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+
+<VBox prefWidth="300.0" spacing="5.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gr.anneta.civilization_selector.controller.MainController">
+   <children>
+      <Label styleClass="label-title" text="Μενού">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="allowDuplicate" mnemonicParsing="false" onAction="#allowDuplicate" text="Don't allow duplicate.">
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <Button mnemonicParsing="false" onAction="#managePlayers" text="Διαχείριση Παικτών">
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </Button>
+      <Button layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#manageCivilizations" text="Manage Civilizations">
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </Button>
+      <Button layoutX="10.0" layoutY="86.0" mnemonicParsing="false" onAction="#showUsernamesWithCivilizations" text="Show usernames with civilizations">
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </Button>
+      <HBox alignment="TOP_RIGHT" styleClass="root">
+         <children>
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#klisimoAction" text="Κλείσιμο" />
+         </children>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <stylesheets>
+    <URL value="@../../files/css/common.css" />
+  </stylesheets>
+</VBox>
