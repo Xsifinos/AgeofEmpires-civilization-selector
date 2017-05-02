@@ -13,9 +13,9 @@
    <children>
       <VBox prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="TOP_LEFT" styleClass="label-title" text="Επεξεργασία Παίκτη" textOverrun="CLIP" />
+            <Label fx:id="title" alignment="TOP_LEFT" styleClass="label-title" text="Επεξεργασία Παίκτη" textOverrun="CLIP" />
             <Label alignment="TOP_LEFT" styleClass="label-description" text="Επεξεργαστείτε ελεύθερα τον παίκτη που επιλέξατε." />
-            <GridPane vgap="5.0">
+            <GridPane fx:id="grid" vgap="5.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="NEVER" maxWidth="128.0" minWidth="10.0" prefWidth="96.0" />
                 <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="284.0" />

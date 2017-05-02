@@ -8,6 +8,7 @@ import java.util.Objects;
  */
 public class Player {
 
+//    private final String firstName="";
     private String name;
 
     private String username;
@@ -22,20 +23,26 @@ public class Player {
         this.username = username;
     }
 
+//    public void getFirstName(final String firstName) {
+//        firstName = "John";
+//    }
+//    public void getLastName() {
+//        final String lastName;
+//        lastName = null;
+//    }
     public void setName(String name) {
 
         if (name != null) {
-            this.name = name.replace(" ","");
+            // Set the value in variable.
+            this.name = name;    
         }
-        // Set the value in variable.
-        this.name = name;
     }
 
     public void setUsername(String username) {
 
         if (username != null) {
             // Set the value in variable.
-            this.username = username.replace(" ","");
+            this.username = username;  
         }
     }
 

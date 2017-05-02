@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class PlayerService {
 
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
 
     public PlayerService() {
         playerRepository = new PlayerRepository();
@@ -24,19 +24,29 @@ public class PlayerService {
     public Player create(Player player) throws SifinosException {
         // Argument validation.
         if (player == null) {
-            throw new SifinosException("WARNING : Null! Please enter the username.");
+            throw new SifinosException("WARNING : Null! Try again.");
         }
         // Business rules.
         if (player.getName() == null || player.getUsername() == null) {
-            throw new SifinosException("WARNING : Null! Please enter the name.");
+            throw new SifinosException("WARNING : Null! Try again.");
         }
-        if (player.getName().trim().isEmpty() || player.getUsername().trim().isEmpty()) {
-            throw new SifinosException("WARNING : Empty space! Please enter the username.");
+        if (player.getUsername().trim().isEmpty() && player.getName().trim().isEmpty()) {
+            throw new SifinosException("WARNING : Empty space! Try again.");
+        }
+        if (player.getName().trim().isEmpty()) {
+            throw new SifinosException("WARNING : Empty space! Please enter your name.");
+        }
+        if (player.getUsername().trim().isEmpty()) {
+            throw new SifinosException("WARNING : Empty space! Please enter your username.");
         }
 
-        playerRepository.create(player);
+        String name = player.getName().replace(" ", "");
+        String username = player.getUsername().replace(" ", "");
+        Player player1 = new Player(name, username);
 
-        return player;
+        playerRepository.create(player1);
+
+        return player1;
     }
 
     public boolean delete(String username) throws SifinosException {
@@ -58,27 +68,32 @@ public class PlayerService {
             throw new SifinosException("WARNING : Username does not exist! Try again.");
         }
         playerRepository.delete(player);
-
+        
+        isDeleted = true;
+        
         return isDeleted;
     }
 
-    public boolean update(Player player) throws SifinosException {
+    public Player update(Player player) throws SifinosException {
         // Argument validation.
         if (player == null) {
-            return false;
+            throw new SifinosException("WARNING : Null! Try again.");
         }
         // Business rules.
         if (player.getName() == null || player.getUsername() == null) {
-            return false;
+            throw new SifinosException("WARNING : Null! Try again.");
         }
-        if (player.getName().trim().isEmpty() || player.getUsername().trim().isEmpty()) {
-            return false;
+        if (player.getName().trim().isEmpty()) {
+            throw new SifinosException("WARNING : Empty space! Please enter your name.");
         }
-        boolean isUpdated = false;
 
-        playerRepository.update(player);
+        String name = player.getName().replace(" ", "");
+        String username = player.getUsername().replace(" ", "");
+        Player player1 = new Player(name, username);
 
-        return isUpdated;
+        playerRepository.update(player1);
+
+        return player1;
     }
 
     public boolean isEmpty() {

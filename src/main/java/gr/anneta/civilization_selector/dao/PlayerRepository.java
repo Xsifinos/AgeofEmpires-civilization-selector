@@ -21,9 +21,6 @@ public class PlayerRepository extends FileUtils {
     }
 
     public Player create(Player player) throws SifinosException {
-        String name = player.getName().replace(" ", "");
-        String username = player.getUsername().replace(" ", "");
-        Player playerWithoutSpaces = new Player(name, username);
         // Create an ObjectMapper object to use to convert object to JSON String.
         ObjectMapper mapper = new ObjectMapper();
         // Initialize local variable.
@@ -32,12 +29,12 @@ public class PlayerRepository extends FileUtils {
             // Use a for loop to check if the player already exists.
             for (Player current : find()) {
                 // The condition to search the player.
-                if (playerWithoutSpaces.equals(current)) {
+                if (player.equals(current)) {
                     throw new SifinosException("WARNING : Username already exists! Try again.");
                 }
             }
             // Convert object to JSON String.
-            jsonInString = mapper.writeValueAsString(playerWithoutSpaces);
+            jsonInString = mapper.writeValueAsString(player);
 
         } catch (IOException ex) {
             throw new RuntimeException();
@@ -45,7 +42,7 @@ public class PlayerRepository extends FileUtils {
         // Append JSON String to file.
         appendInFile(jsonInString + "\n");
 
-        return playerWithoutSpaces;
+        return player;
     }
 
     public Player readByUsername(String username) throws SifinosException {
@@ -59,19 +56,15 @@ public class PlayerRepository extends FileUtils {
     }
 
     public Player update(Player player) throws SifinosException {
-        String name = player.getName().replace(" ", "");
-        String username = player.getUsername().replace(" ", "");
-        Player playerWithoutSpaces = new Player(name, username);
-
         // Create list to use to manipulate the players.
         List<Player> playerList = find();
 
         // Use a for loop to the current list to find the player and replace him.
         for (Player current : playerList) {
             // The condition to find the player. 
-            if (playerWithoutSpaces.equals(current)) {
+            if (player.equals(current)) {
                 playerList.remove(current);
-                playerList.add(playerWithoutSpaces);
+                playerList.add(player);
 
                 // Create new empty file to append the new list as JSON.
                 emptyFile();
@@ -84,7 +77,7 @@ public class PlayerRepository extends FileUtils {
                 break;
             }
         }
-        return playerWithoutSpaces;
+        return player;
     }
 
     public boolean delete(Player player) throws SifinosException {

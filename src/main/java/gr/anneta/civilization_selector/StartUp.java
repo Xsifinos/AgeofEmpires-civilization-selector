@@ -29,8 +29,6 @@ public class StartUp extends Application {
     }
 }
 
-
-
 //////////   Tests  //////////////
 //        FileUtils fileUtils = new FileUtils("/home/sifis/Project/AgeofEmpires/a.txt");
 //        fileUtils.writeInFile("");
@@ -53,8 +51,6 @@ public class StartUp extends Application {
 //        String[] aArray=a.split(" ");
 //        for(int i=0;i<aArray.length;i++){System.out.print(aArray[i]);}
 //        System.out.println("--->" + a.replace(" ", ""));
-
-
 //        User user=new User();
 //        user.editUser();
 //        Boolean allowduplicatebool = consoleUI.getAllowduplicatebool();

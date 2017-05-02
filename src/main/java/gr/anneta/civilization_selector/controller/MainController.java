@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainController implements Initializable {
@@ -24,8 +25,9 @@ public class MainController implements Initializable {
     @FXML
     void managePlayers(ActionEvent event) throws IOException {
         Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Age of Empires Civilization Selector - Players");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PlayersView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PlayerManagerView.fxml"));
         Parent root = (Parent) loader.load();
         stage.setScene(new Scene(root));
         stage.show();

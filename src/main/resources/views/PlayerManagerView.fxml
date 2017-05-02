@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<VBox prefWidth="500.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gr.anneta.civilization_selector.controller.PlayersController">
+<VBox prefWidth="500.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gr.anneta.civilization_selector.controller.PlayerManagerController">
    <children>
         <Label fx:id="Title" styleClass="label-title" text="Διαχείριση Παικτών" VBox.vgrow="ALWAYS">
          <font>
@@ -27,8 +27,8 @@
       </Label>
       <TableView fx:id="table" VBox.vgrow="ALWAYS">
         <columns>
-          <TableColumn id="name" fx:id="nameCol" maxWidth="-1.0" minWidth="-1.0" prefWidth="229.0" text="Name" />
-          <TableColumn id="username" fx:id="usernameCol" maxWidth="-1.0" minWidth="-1.0" prefWidth="229.0" text="Username" />
+          <TableColumn fx:id="nameCol" editable="false" minWidth="20.0" prefWidth="229.0" text="Name" />
+          <TableColumn fx:id="usernameCol" editable="false" minWidth="20.0" prefWidth="229.0" text="Username" />
         </columns>
          <VBox.margin>
             <Insets top="10.0" />

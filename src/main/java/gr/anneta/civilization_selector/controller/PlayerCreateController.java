@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
  */
 public class PlayerCreateController implements Initializable {
 
+    private final PlayerService PLAYER_SERVICE = new PlayerService();
     @FXML
     private TextField name;
     @FXML
@@ -29,13 +31,15 @@ public class PlayerCreateController implements Initializable {
         Player player = new Player();
         player.setUsername(username.getText());
         player.setName(name.getText());
-        PlayerService playerService = new PlayerService();
         try {
-            playerService.create(player);
-            Stage stage = getStage();
-            stage.close();
+            Player player1 = PLAYER_SERVICE.create(player);
+            PlayerManagerController.tableManager.createObject(player1);
+            getStage().close();
         } catch (SifinosException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.CLOSE);
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.setResizable(true);
+            alert.getDialogPane().setPrefWidth(450);
             alert.showAndWait();
         }
     }
@@ -47,7 +51,7 @@ public class PlayerCreateController implements Initializable {
     }
 
     @FXML
-    private Stage getStage(){
+    private Stage getStage() {
         Stage stage = (Stage) name.getScene().getWindow();
         return stage;
     }

@@ -1,19 +1,17 @@
 package gr.anneta.civilization_selector.controller;
 
 import gr.anneta.civilization_selector.domain.Player;
+import gr.anneta.civilization_selector.lib.SifinosException;
 import gr.anneta.civilization_selector.service.PlayerService;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeTableColumn.CellEditEvent;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -22,14 +20,38 @@ import javafx.stage.Stage;
  */
 public class PlayerUpdateController implements Initializable {
 
-    private String username;
+    private final PlayerService PLAYER_SERVICE = new PlayerService();
+//    private String username;
     @FXML
-    private TextField playerUsername;
+    private Label title;
+//    @FXML
+//    private GridPane grid; 
     @FXML
-    private TextField playerName;
+    protected TextField playerUsername;
+    @FXML
+    protected TextField playerName;
+    private Player player;
 
     @FXML
     void editPlayer(ActionEvent event) {
+
+//        Player player = new Player();
+//        Player player = (Player) PlayerManagerController.tableManager.getTable().getSelectionModel().getSelectedItem();
+//        player.setUsername(username);
+        if (player == null) {
+            getStage().close();
+        } else {
+            player.setName(playerName.getText());
+//        player.setUsername(playerUsername.getText());
+//        playerName.setText(player.getName());
+            try {
+
+//            Player player1 = (Player) PlayerManagerController.tableManager.getTable().getSelectionModel().getSelectedItem();
+                Player player1 = PLAYER_SERVICE.update(player);
+//            PlayerManagerController.tableManager.clearObjects(PLAYER_SERVICE.find());
+//            PlayerManagerController.tableManager.addObjects(PLAYER_SERVICE.find());
+                PlayerManagerController.tableManager.updateObject(player1);
+                getStage().close();
 //        playerUsername.getText();
 //        player.setName(name.getText());
 //        PlayerService playerService = new PlayerService();
@@ -53,22 +75,54 @@ public class PlayerUpdateController implements Initializable {
 //            }
 //        }
 //        );
+            } catch (SifinosException ex) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, ex.getMessage());
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.setResizable(true);
+                alert.getDialogPane().setPrefWidth(450);
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void close(ActionEvent event) {
-        Stage stage = getStage();
-        stage.close();
+        getStage().close();
     }
 
     @FXML
     private Stage getStage() {
-        Stage stage = (Stage) playerName.getScene().getWindow();
-        return stage;
+        return (Stage) title.getScene().getWindow();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    }
+//        grid = new GridPane();
+//        playerUsername=new TextField();
+//        playerName=new TextField();
+//        grid.getChildren().add(playerUsername);
+//        grid.getChildren().add(playerName);
+        player = PlayerManagerController.tableManager.getSelectedObject();
+        if (player == null) {
+            Alert alertNullPointer = new Alert(Alert.AlertType.ERROR, "Δεν έχετε επιλέξει κανέναν παίκτη!!");;;;
+            alertNullPointer.initModality(Modality.APPLICATION_MODAL);
+            alertNullPointer.setResizable(true);
+            alertNullPointer.getDialogPane().setPrefWidth(300);
+            alertNullPointer.showAndWait();
+        } else {
+//        username=player.getUsername();
+//        String name=player.getName();
 
+//        username = (String) col.getCellObservableValue(username).getValue();
+//        playerUsername.textProperty().set(username);
+//        playerName.setVisible(true);//appendText(name); //setText(name);
+            playerUsername.setText(player.getUsername());
+            playerName.setText(player.getName());
+        }
+    }
+//    @Override
+//    public String toString() {
+//        // Convert the user object to string name and username.
+//        return this.username;
+//    }
 }
