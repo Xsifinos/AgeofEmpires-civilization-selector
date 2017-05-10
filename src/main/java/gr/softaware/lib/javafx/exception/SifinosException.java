@@ -1,4 +1,4 @@
-package gr.anneta.civilization_selector.lib;
+package gr.softaware.lib.javafx.exception;
 
 /**
  *

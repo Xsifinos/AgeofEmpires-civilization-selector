@@ -13,8 +13,8 @@
    <children>
       <VBox prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="title" alignment="TOP_LEFT" styleClass="label-title" text="Επεξεργασία Παίκτη" textOverrun="CLIP" />
-            <Label alignment="TOP_LEFT" styleClass="label-description" text="Επεξεργαστείτε ελεύθερα τον παίκτη που επιλέξατε." />
+            <Label fx:id="title" alignment="TOP_LEFT" styleClass="h4" text="Επεξεργασία Παίκτη" textOverrun="CLIP" />
+            <Label alignment="TOP_LEFT" styleClass="small" text="Επεξεργαστείτε ελεύθερα τον παίκτη που επιλέξατε." />
             <GridPane fx:id="grid" vgap="5.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="NEVER" maxWidth="128.0" minWidth="10.0" prefWidth="96.0" />
@@ -44,12 +44,12 @@
             </GridPane>
             <HBox alignment="CENTER_RIGHT" spacing="10.0">
                <children>
-                  <Button fx:id="close" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#close" text="Άκυρο">
+                  <Button fx:id="close" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#close" styleClass="btn-default" text="Άκυρο">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#editPlayer" text="Αποθήκευση">
+                  <Button mnemonicParsing="false" onAction="#editPlayer" styleClass="btn-primary" text="Αποθήκευση">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -67,5 +67,6 @@
    </children>
   <stylesheets>
     <URL value="@../../files/css/common.css" />
+    <URL value="@../../files/css/fextile.css" />
   </stylesheets>
 </AnchorPane>

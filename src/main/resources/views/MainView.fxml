@@ -12,7 +12,7 @@
 
 <VBox prefWidth="300.0" spacing="5.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gr.anneta.civilization_selector.controller.MainController">
    <children>
-      <Label styleClass="label-title" text="Μενού">
+      <Label styleClass="h4" text="Μενού">
          <font>
             <Font size="21.0" />
          </font>
@@ -42,7 +42,7 @@
       </Button>
       <HBox alignment="TOP_RIGHT" styleClass="root">
          <children>
-            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#klisimoAction" text="Κλείσιμο" />
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#klisimoAction" styleClass="btn-default" text="Κλείσιμο" />
          </children>
          <VBox.margin>
             <Insets top="20.0" />
@@ -54,5 +54,6 @@
    </padding>
    <stylesheets>
     <URL value="@../../files/css/common.css" />
+    <URL value="@../../files/css/fextile.css" />
   </stylesheets>
 </VBox>

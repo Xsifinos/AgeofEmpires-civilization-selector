@@ -1,4 +1,4 @@
-package gr.anneta.civilization_selector.lib;
+package gr.softaware.lib.javafx.control;
 
 import java.util.List;
 import java.util.Map;

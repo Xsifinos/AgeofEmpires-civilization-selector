@@ -3,7 +3,7 @@ package gr.anneta.civilization_selector.controller;
 import gr.anneta.civilization_selector.domain.Civilization;
 import gr.anneta.civilization_selector.service.PlayerService;
 import gr.anneta.civilization_selector.domain.Player;
-import gr.anneta.civilization_selector.lib.SifinosException;
+import gr.softaware.lib.javafx.exception.SifinosException;
 import gr.anneta.civilization_selector.service.CivilizationService;
 import java.io.IOException;
 import java.util.ArrayList;

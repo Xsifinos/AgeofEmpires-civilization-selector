@@ -3,7 +3,7 @@ package gr.anneta.civilization_selector.service;
 import gr.anneta.civilization_selector.dao.FileUtils;
 import gr.anneta.civilization_selector.dao.PlayerRepository;
 import gr.anneta.civilization_selector.domain.Player;
-import gr.anneta.civilization_selector.lib.SifinosException;
+import gr.softaware.lib.javafx.exception.SifinosException;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;

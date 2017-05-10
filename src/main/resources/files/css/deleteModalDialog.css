@@ -1,0 +1,29 @@
+/*.myDialog{
+    -fx-background-color: #f9d900;
+}*/
+/**Costumization of Buttons**/
+.dialog-pane .button:default{
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 6px 12px 6px 12px;
+    -fx-background-color:#d9534f;
+    -fx-text-fill:#ffffff;
+    -fx-wrap-text: true;
+    -fx-cursor:hand;
+}
+
+.dialog-pane .button:cancel{     
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 6px 12px 6px 12px;
+    -fx-text-fill: #333333;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-cursor:hand;
+}
+
+/*.dialog-pane .button:hover{     
+  -fx-background-color:#d2322d;
+  -fx-text-fill:#ffffff;
+  -fx-font-weight:bold; 
+ }*/

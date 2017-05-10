@@ -12,12 +12,12 @@
 
 <VBox prefWidth="500.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gr.anneta.civilization_selector.controller.PlayerManagerController">
    <children>
-        <Label fx:id="Title" styleClass="label-title" text="Διαχείριση Παικτών" VBox.vgrow="ALWAYS">
+        <Label fx:id="Title" styleClass="h4" text="Διαχείριση Παικτών" VBox.vgrow="ALWAYS">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label fx:id="Subtitle" styleClass="label-description" text="Σε αυτό το μενού μπορείτε να προσθέσετε,επεξεργαστείτε ή διαγράψετε παίκτες." VBox.vgrow="ALWAYS">
+      <Label fx:id="Subtitle" styleClass="small" text="Σε αυτό το μενού μπορείτε να προσθέσετε,επεξεργαστείτε ή διαγράψετε παίκτες." VBox.vgrow="ALWAYS">
          <font>
             <Font size="10.0" />
          </font>
@@ -39,17 +39,17 @@
       </TableView>
       <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="10.0">
          <children>
-            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#delete" text="Διαγραφή">
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#delete" styleClass="btn-danger" text="Διαγραφή">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#edit" text="Επεξεργασία">
+            <Button mnemonicParsing="false" onAction="#edit" styleClass="btn-primary" text="Επεξεργασία">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="291.0" layoutY="10.0" mnemonicParsing="false" onAction="#create" text="Δημιουργία" />
+            <Button alignment="TOP_LEFT" layoutX="291.0" layoutY="10.0" mnemonicParsing="false" onAction="#create" styleClass="btn-success" text="Δημιουργία" />
          </children>
          <VBox.margin>
             <Insets top="10.0" />
@@ -57,7 +57,7 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT">
          <children>
-            <Button alignment="CENTER_RIGHT" onAction="#close" text="Κλείσιμο" VBox.vgrow="ALWAYS">
+            <Button alignment="CENTER_RIGHT" onAction="#close" styleClass="btn-default" text="Κλείσιμο" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -73,5 +73,6 @@
    </padding>
    <stylesheets>
     <URL value="@../../files/css/common.css" />
+    <URL value="@../../files/css/fextile.css" />
   </stylesheets>
 </VBox>

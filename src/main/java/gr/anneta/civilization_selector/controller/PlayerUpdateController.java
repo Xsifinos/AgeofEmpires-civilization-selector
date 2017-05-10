@@ -1,7 +1,7 @@
 package gr.anneta.civilization_selector.controller;
 
 import gr.anneta.civilization_selector.domain.Player;
-import gr.anneta.civilization_selector.lib.SifinosException;
+import gr.softaware.lib.javafx.exception.SifinosException;
 import gr.anneta.civilization_selector.service.PlayerService;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,9 +38,7 @@ public class PlayerUpdateController implements Initializable {
 //        Player player = new Player();
 //        Player player = (Player) PlayerManagerController.tableManager.getTable().getSelectionModel().getSelectedItem();
 //        player.setUsername(username);
-        if (player == null) {
-            getStage().close();
-        } else {
+        
             player.setName(playerName.getText());
 //        player.setUsername(playerUsername.getText());
 //        playerName.setText(player.getName());
@@ -81,7 +79,6 @@ public class PlayerUpdateController implements Initializable {
                 alert.setResizable(true);
                 alert.getDialogPane().setPrefWidth(450);
                 alert.showAndWait();
-            }
         }
     }
 
@@ -102,14 +99,8 @@ public class PlayerUpdateController implements Initializable {
 //        playerName=new TextField();
 //        grid.getChildren().add(playerUsername);
 //        grid.getChildren().add(playerName);
+//        title=new Label();
         player = PlayerManagerController.tableManager.getSelectedObject();
-        if (player == null) {
-            Alert alertNullPointer = new Alert(Alert.AlertType.ERROR, "Δεν έχετε επιλέξει κανέναν παίκτη!!");;;;
-            alertNullPointer.initModality(Modality.APPLICATION_MODAL);
-            alertNullPointer.setResizable(true);
-            alertNullPointer.getDialogPane().setPrefWidth(300);
-            alertNullPointer.showAndWait();
-        } else {
 //        username=player.getUsername();
 //        String name=player.getName();
 
@@ -118,7 +109,6 @@ public class PlayerUpdateController implements Initializable {
 //        playerName.setVisible(true);//appendText(name); //setText(name);
             playerUsername.setText(player.getUsername());
             playerName.setText(player.getName());
-        }
     }
 //    @Override
 //    public String toString() {

@@ -1,7 +1,7 @@
 package gr.anneta.civilization_selector.dao;
 
 import gr.anneta.civilization_selector.domain.Player;
-import gr.anneta.civilization_selector.lib.SifinosException;
+import gr.softaware.lib.javafx.exception.SifinosException;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

@@ -1,7 +1,7 @@
 package gr.anneta.civilization_selector.controller;
 
 import gr.anneta.civilization_selector.domain.Player;
-import gr.anneta.civilization_selector.lib.SifinosException;
+import gr.softaware.lib.javafx.exception.SifinosException;
 import gr.anneta.civilization_selector.service.PlayerService;
 import java.net.URL;
 import java.util.ResourceBundle;
