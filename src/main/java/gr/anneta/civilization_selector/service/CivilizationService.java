@@ -1,6 +1,8 @@
 package gr.anneta.civilization_selector.service;
 
+//import gr.anneta.civilization_selector.dao.CivilizationRepository;
 import gr.anneta.civilization_selector.domain.Civilization;
+import gr.softaware.lib.javafx.exception.SifinosException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,23 +13,26 @@ import java.util.Random;
  */
 public class CivilizationService {
 
-    private List<Civilization> civilizations;
+//    private final CivilizationRepository civilizationRepository;
 
+    private List<Civilization> civilizations;
     public CivilizationService() {
+//        civilizationRepository = new CivilizationRepository();
         this.civilizations = new ArrayList<>();
     }
 
-    public Civilization create(Civilization civilization) {
+    public Civilization create(Civilization civilization) throws SifinosException {
+//        civilizationRepository.create(civilization);
         civilizations.add(civilization);
         return civilization;
     }
 
-    public Civilization create(String title) {
-        Civilization civilization = new Civilization();
-        civilization.setTitle(title);
-        civilizations.add(civilization);
-        return civilization;
-    }
+//    public Civilization create(String title) {
+//        Civilization civilization = new Civilization();
+//        civilization.setTitle(title);
+//        civilizations.add(civilization);
+//        return civilization;
+//    }
 
     public void createAllCivilizations() {
         Civilization civilization;
@@ -89,7 +94,7 @@ public class CivilizationService {
         int temp = random.nextInt(civilizations.size());
         Civilization civilization = civilizations.get(temp);
         if (!allowduplicates) {
-                civilizations.remove(temp);
+            civilizations.remove(temp);
         }
         return civilization;
     }

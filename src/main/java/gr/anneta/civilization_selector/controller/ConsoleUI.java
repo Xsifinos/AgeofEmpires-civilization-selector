@@ -33,7 +33,7 @@ public class ConsoleUI {
         this.allowDuplicatebool = true;
     }
 
-    public void menuUI() throws IOException {
+    public void menuUI() throws IOException, SifinosException {
 
         // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
@@ -190,7 +190,7 @@ public class ConsoleUI {
         }
     }
 
-    public void menuCivilUI() {
+    public void menuCivilUI() throws SifinosException {
         // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
         String name = "";
@@ -229,7 +229,7 @@ public class ConsoleUI {
         }
     }
 
-    public void createCivil() {
+    public void createCivil() throws SifinosException {
         // Scanner to use for getting the inputs from console.
         Scanner scanner = new Scanner(System.in);
 
