@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+
+<VBox prefWidth="500.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gr.anneta.civilization_selector.controller.CivilizationManagerController">
+   <children>
+        <Label fx:id="Title" styleClass="h4" text="Διαχείριση Λαών" VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="Subtitle" styleClass="small" text="Σε αυτό το μενού μπορείτε να προσθέσετε,επεξεργαστείτε ή διαγράψετε λαούς." VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="10.0" />
+         </font>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Label>
+      <TableView fx:id="table" VBox.vgrow="ALWAYS">
+        <columns>
+          <TableColumn fx:id="titleCol" editable="false" minWidth="20.0" prefWidth="110.0" text="Title" />
+          <TableColumn fx:id="specialUnitCol" editable="false" minWidth="20.0" prefWidth="110.0" text="Special Unit" />
+            <TableColumn fx:id="usernameCol1" editable="false" minWidth="20.0" text="Barracks" />
+            <TableColumn fx:id="usernameCol2" editable="false" minWidth="20.0" text="Archery" />
+            <TableColumn fx:id="usernameCol21" editable="false" minWidth="20.0" text="Stable" />
+        </columns>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <stylesheets>
+            <URL value="@../files/css/fextile.css" />
+            <URL value="@../files/css/common.css" />
+         </stylesheets>
+      </TableView>
+      <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="10.0">
+         <children>
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#delete" styleClass="btn-danger" text="Διαγραφή">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#edit" styleClass="btn-primary" text="Επεξεργασία">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutX="291.0" layoutY="10.0" mnemonicParsing="false" onAction="#create" styleClass="btn-success" text="Δημιουργία" />
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT">
+         <children>
+            <Button alignment="CENTER_RIGHT" onAction="#close" styleClass="btn-default" text="Κλείσιμο" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <stylesheets>
+    <URL value="@../../files/css/common.css" />
+    <URL value="@../../files/css/fextile.css" />
+  </stylesheets>
+</VBox>
