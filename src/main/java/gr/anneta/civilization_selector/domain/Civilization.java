@@ -22,10 +22,18 @@ public class Civilization {
         this.stable = false;
     }
 
-    public Civilization(String title, int id) {
-        this.title = title;
-        this.id = id;
-    }
+//    public Civilization(String title) {
+//        this.title = title;
+//    }
+//
+//    public Civilization(int id) {
+//        this.id = id;
+//    }
+//    
+//    public Civilization(String title, int id) {
+//        this.title = title;
+//        this.id = id;
+//    }
 
     public int getId() {
         return id;

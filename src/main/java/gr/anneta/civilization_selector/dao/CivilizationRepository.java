@@ -60,7 +60,7 @@ public class CivilizationRepository extends FileUtils {
         // Use a for loop to search the player with the username.  
         for (Civilization civil : find()) {
             if (id == civil.getId()) {
-                System.out.println(civil);
+//                System.out.println(civil);
                 return civil;
             }
         }

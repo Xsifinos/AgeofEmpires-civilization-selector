@@ -70,7 +70,7 @@ public class ConsoleUI {
 
                 case "4":
                     // Show the list of usernames with civilizations.
-                    showUsernameWithCivilization();
+//                    showUsernameWithCivilization();
                     break;
             }
         }
@@ -94,19 +94,19 @@ public class ConsoleUI {
         return allowDuplicatebool;
     }
 
-    private void showUsernameWithCivilization() throws IOException {
-        // Print message when playerlist or list of civilizations are empties.
-        if (playerService.isEmpty() || civilizationService.isEmpty()) {
-            System.out.println("You haven't entered usernames or civivilizations!!!");
-            return;
-        }
-        // Correspond each player of the list of players
-        // to a random civilization and print it.
-        for (Player player : playerService.find()) {
-            Civilization randomCivilization = civilizationService.getRandomCivilization(allowDuplicatebool);
-            System.out.println(player + ":" + randomCivilization);
-        }
-    }
+//    private void showUsernameWithCivilization() throws IOException {
+//        // Print message when playerlist or list of civilizations are empties.
+//        if (playerService.isEmpty() || civilizationService.isEmpty()) {
+//            System.out.println("You haven't entered usernames or civivilizations!!!");
+//            return;
+//        }
+//        // Correspond each player of the list of players
+//        // to a random civilization and print it.
+//        for (Player player : playerService.find()) {
+//            Civilization randomCivilization = civilizationService.getRandomCivilization(allowDuplicatebool);
+//            System.out.println(player + ":" + randomCivilization);
+//        }
+//    }
 
     public void menuPlayerUI() throws IOException {
         // Scanner to use for getting the inputs from console.
@@ -215,11 +215,11 @@ public class ConsoleUI {
                     break;
                 case "2":
                     // Find the civilization and delete it.
-                    deleteCivil();
+//                    deleteCivil();
                     break;
                 case "3":
                     // Insert automatical 18 civilizations.
-                    autoInsertion();
+//                    autoInsertion();
                     break;
                 case "4":
                     // Show the list of the civilizations.
@@ -245,24 +245,24 @@ public class ConsoleUI {
         civilizationService.create(civilization);
     }
 
-    public void deleteCivil() {
-        // Scanner to use for getting the inputs from console.
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("\t\t\tEnter the title of the civilization you want to delete.\n\t\t\t=>");
-        String title = scanner.nextLine();
+//    public void deleteCivil() {
+//        // Scanner to use for getting the inputs from console.
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("\t\t\tEnter the title of the civilization you want to delete.\n\t\t\t=>");
+//        String title = scanner.nextLine();
+//
+//        if (!civilizationService.delete(title)) {
+//            System.out.println("O laos den vrethike.");
+//        }
+//    }
 
-        if (!civilizationService.delete(title)) {
-            System.out.println("O laos den vrethike.");
-        }
-    }
-
-    public void autoInsertion() {
-        // Scanner to use for getting the inputs from console.
-        civilizationService.createAllCivilizations();
-
-        System.out.println("Oi laoi kataxwrhthikan.");
-        return;
-    }
+//    public void autoInsertion() {
+//        // Scanner to use for getting the inputs from console.
+//        civilizationService.createAllCivilizations();
+//
+//        System.out.println("Oi laoi kataxwrhthikan.");
+//        return;
+//    }
 
     private void showListCivilizations() {
 
