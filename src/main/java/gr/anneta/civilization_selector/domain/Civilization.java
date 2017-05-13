@@ -14,7 +14,7 @@ public class Civilization {
     private boolean stable;
 
     public Civilization() {
-        this.id = 0;
+        this.id = 1;
         this.title = "";
         this.specialUnit = "";
         this.barracks = false;
@@ -22,9 +22,13 @@ public class Civilization {
         this.stable = false;
     }
 
-//    public Civilization(String title) {
-//        this.title = title;
-//    }
+    public Civilization(String title, String specialUnit, boolean barracks, boolean archery, boolean stable) {
+        this.title = title;
+        this.specialUnit = specialUnit;
+        this.barracks = barracks;
+        this.archery = archery;
+        this.stable = stable;
+    }
 //
 //    public Civilization(int id) {
 //        this.id = id;
@@ -87,7 +91,7 @@ public class Civilization {
     public String toString() {
 
         // Convert the civilization object to string title.
-        return "Title:" + this.title + "\n" + "Id:" + this.id;
+        return "Title:" + this.title + "\n" + "Id:" + this.id + this.barracks +this.archery +this.stable;
     }
 
     @Override

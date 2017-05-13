@@ -30,7 +30,7 @@
             <Insets bottom="10.0" />
          </VBox.margin>
       </Button>
-      <Button layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#manageCivilizations" text="Manage Civilizations">
+      <Button layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#manageCivilizations" text="Διαχείριση Λαών">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin>

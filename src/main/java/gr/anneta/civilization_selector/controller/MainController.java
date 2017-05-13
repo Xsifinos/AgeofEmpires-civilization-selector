@@ -38,7 +38,7 @@ public class MainController implements Initializable {
     void manageCivilizations(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         stage.setTitle("Age of Empires Civilization Selector - Civilizations");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/CivilizationsView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/CivilizationManagerView.fxml"));
         Parent root = (Parent) loader.load();
         stage.setScene(new Scene(root));
         stage.show();

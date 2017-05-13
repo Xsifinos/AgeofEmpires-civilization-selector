@@ -1,37 +1,37 @@
 package gr.anneta.civilization_selector;
 
 import java.io.IOException;
-//import javafx.application.Application;
-//import javafx.fxml.FXMLLoader;
-//import javafx.scene.Parent;
-//import javafx.scene.Scene;
-//import javafx.stage.Stage;
-import gr.anneta.civilization_selector.dao.CivilizationRepository;
-import gr.anneta.civilization_selector.service.CivilizationService;
-import gr.anneta.civilization_selector.dao.PlayerRepository;
-import gr.anneta.civilization_selector.domain.Civilization;
-import gr.anneta.civilization_selector.domain.Player;
-import gr.anneta.civilization_selector.controller.ConsoleUI;
-import gr.softaware.lib.javafx.exception.SifinosException;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+//import gr.anneta.civilization_selector.dao.CivilizationRepository;
+//import gr.anneta.civilization_selector.service.CivilizationService;
+//import gr.anneta.civilization_selector.dao.PlayerRepository;
+//import gr.anneta.civilization_selector.domain.Civilization;
+//import gr.anneta.civilization_selector.domain.Player;
+//import gr.anneta.civilization_selector.controller.ConsoleUI;
+//import gr.softaware.lib.javafx.exception.SifinosException;
 
 /**
  * @author sifis Contains the main method.
  */
-public class StartUp {      //extends Application {
+public class StartUp extends Application {
 
-//    @Override
-//    public void start(Stage stage) throws Exception {
-//        Parent root = FXMLLoader.load(getClass().getResource("/views/MainView.fxml"));
-//        Scene scene = new Scene(root);
-//        scene.getStylesheets().add("/files/css/common.css");
-//        stage.setTitle("Age of Empires Civilization Selector - Main");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-    public static void main(String[] args) throws IOException, SifinosException {
-//        launch(args);
-        ConsoleUI consoleUI = new ConsoleUI();
-        consoleUI.menuUI();
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/MainView.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("/files/css/common.css");
+        stage.setTitle("Age of Empires Civilization Selector - Main");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public static void main(String[] args) throws IOException {
+        launch(args);
+//        ConsoleUI consoleUI = new ConsoleUI();
+//        consoleUI.menuUI();
 //        Civilization civil=new Civilization();
 //        CivilizationRepository civilizationRepository=new CivilizationRepository();
 //        civilizationRepository.readById(2);

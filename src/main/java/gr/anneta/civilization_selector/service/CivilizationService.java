@@ -20,7 +20,15 @@ public class CivilizationService {
     }
 
     public Civilization create(Civilization civilization) throws SifinosException {
-        civilizationRepository.create(civilization);
+        List<Civilization> civilizationList = civilizationRepository.find();
+        if (!civilizationList.isEmpty()) {
+            Civilization lastCivilization = civilizationList.get(civilizationList.size() - 1);
+            int id = lastCivilization.getId();
+            civilization.setId(id + 1);
+            civilizationRepository.create(civilization);
+        } else {
+            civilizationRepository.create(civilization);
+        }
         return civilization;
     }
 
@@ -58,12 +66,12 @@ public class CivilizationService {
 //    
     public boolean delete(Civilization civil) throws SifinosException {
         boolean isDeleted = false;
-        
+
         int id = civil.getId();
         Civilization civilToDelete = civilizationRepository.readById(id);
-        
+
         civilizationRepository.delete(civilToDelete);
-        
+
         isDeleted = true;
 
         return isDeleted;

@@ -46,7 +46,7 @@ public class CivilizationManagerController implements Initializable {
     void create(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Age of Empires Civilization Selector - Create Player");
+        stage.setTitle("Age of Empires Civilization Selector - Create Civilization");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/CivilizationCreateView.fxml"));
         Parent root = (Parent) loader.load();
         stage.setScene(new Scene(root));
@@ -58,20 +58,6 @@ public class CivilizationManagerController implements Initializable {
         Civilization civilization = tableManager.getSelectedObject();
         if (civilization == null) {
             new NoRowSelectedModal().show();
-//            Alert alertNullPointer = new Alert(Alert.AlertType.NONE);
-//            alertNullPointer.setTitle("ΕΠΕΞΕΡΓΑΣΙΑ ΠΑΙΚΤΗ");
-//            alertNullPointer.setHeaderText(null);
-//            ImageView imageView = new ImageView(getClass().getResource("/files/images/1492875257_alert.png").toExternalForm());
-//            alertNullPointer.setGraphic(imageView);
-//            alertNullPointer.initModality(Modality.APPLICATION_MODAL);
-//            alertNullPointer.setResizable(true);
-//            Label label = new Label("Δεν έχετε επιλέξει κανέναν παίκτη!!");
-//            label.setWrapText(true);
-//            alertNullPointer.getDialogPane().setContent(label);
-////            alertNullPointer.getDialogPane().setPrefWidth(300);
-//            ButtonType cancelButton = new ButtonType("Κλείσιμο", ButtonBar.ButtonData.CANCEL_CLOSE);
-//            alertNullPointer.getDialogPane().getButtonTypes().add(cancelButton);
-//            alertNullPointer.showAndWait();
         } else {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -89,10 +75,10 @@ public class CivilizationManagerController implements Initializable {
         if (civilization == null) {
             new NoRowSelectedModal().show();
         } else {
-            int id = civilization.getId();
+            String title = civilization.getTitle();
             DeleteModal deleteModal = new DeleteModal.DeleteModalBuilder()
-                    .title("Διαγραφή Παίκτη")
-                    .body("Είστε σίγουρος/η για τη διαγραφή του λαού με id " + "'" + id + "'" + " ?")
+                    .title("Διαγραφή Λαού")
+                    .body("Είστε σίγουρος/η για τη διαγραφή του λαού " + "'" + title + "'" + " ?")
                     .action(() -> {
                         try {
                             CIVILIZATION_SERVICE.delete(civilization);
@@ -185,11 +171,13 @@ public class CivilizationManagerController implements Initializable {
             {
                 put(titleCol, new PropertyValueFactory<>("title"));
                 put(specialUnitCol, new PropertyValueFactory<>("specialUnit"));
+                put(barracksCol, new PropertyValueFactory<>("barracks"));
+                put(archeryCol, new PropertyValueFactory<>("archery"));
+                put(stableCol, new PropertyValueFactory<>("stable"));
             }
         });
 //        tableManager.addObjects(FXCollections.observableArrayList(PLAYER_SERVICE.find()));
         tableManager.addObjects(CIVILIZATION_SERVICE.find());
-
     }
 }
 

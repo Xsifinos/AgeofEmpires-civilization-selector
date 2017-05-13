@@ -29,9 +29,9 @@
         <columns>
           <TableColumn fx:id="titleCol" editable="false" minWidth="20.0" prefWidth="110.0" text="Title" />
           <TableColumn fx:id="specialUnitCol" editable="false" minWidth="20.0" prefWidth="110.0" text="Special Unit" />
-            <TableColumn fx:id="usernameCol1" editable="false" minWidth="20.0" text="Barracks" />
-            <TableColumn fx:id="usernameCol2" editable="false" minWidth="20.0" text="Archery" />
-            <TableColumn fx:id="usernameCol21" editable="false" minWidth="20.0" text="Stable" />
+            <TableColumn fx:id="barracksCol" editable="false" minWidth="20.0" text="Barracks" />
+            <TableColumn fx:id="archeryCol" editable="false" minWidth="20.0" text="Archery" />
+            <TableColumn fx:id="stableCol" editable="false" minWidth="20.0" text="Stable" />
         </columns>
          <VBox.margin>
             <Insets top="10.0" />
