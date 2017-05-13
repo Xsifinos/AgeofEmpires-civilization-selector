@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+
+<AnchorPane id="AnchorPane" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gr.anneta.civilization_selector.controller.CivilizationUpdateController">
+   <children>
+      <VBox prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="TOP_LEFT" styleClass="h4" text="Επεξεργασία Λαού" textOverrun="CLIP" />
+            <Label fx:id="subtitle" alignment="TOP_LEFT" styleClass="small" text="Επεξεργαστείτε ελεύθερα τον λαό που επιλέξατε." />
+            <GridPane fx:id="grid" vgap="5.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" maxWidth="128.0" minWidth="10.0" prefWidth="95.0" />
+                <ColumnConstraints hgrow="ALWAYS" maxWidth="258.0" minWidth="10.0" prefWidth="239.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="8.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Title" />
+                  <Label text="Special unit" GridPane.rowIndex="1" />
+                  <TextField fx:id="specialUnit" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="title" disable="true" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </TextField>
+                  <CheckBox fx:id="barracksBool" mnemonicParsing="false" text="Barracks" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <CheckBox fx:id="archeryBool" mnemonicParsing="false" text="Archery" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <CheckBox fx:id="stableBool" mnemonicParsing="false" text="Stable" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </GridPane>
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+               <children>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#close" styleClass="btn-default" text="Άκυρο">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#editCivilization" styleClass="btn-primary" text="Αποθήκευση">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+  <stylesheets>
+    <URL value="@../../files/css/common.css" />
+    <URL value="@../../files/css/fextile.css" />
+  </stylesheets>
+</AnchorPane>
