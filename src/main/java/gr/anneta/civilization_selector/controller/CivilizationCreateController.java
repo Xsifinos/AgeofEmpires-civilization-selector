@@ -47,8 +47,8 @@ public class CivilizationCreateController implements Initializable {
             new NullExceptionModal().show();
         } else {
             try {
-                Civilization civilization1 = CIVILIZATION_SERVICE.create(civilization);
-                CivilizationManagerController.tableManager.createObject(civilization1);
+                CIVILIZATION_SERVICE.create(civilization);
+                CivilizationManagerController.tableManager.createObject(civilization);
                 getStage().close();
             } catch (SifinosException ex) {
             }

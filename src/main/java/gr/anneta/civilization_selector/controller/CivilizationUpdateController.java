@@ -46,8 +46,8 @@ public class CivilizationUpdateController implements Initializable {
             new NullExceptionModal().show();
         } else {
             try {
-                Civilization civilization1 = CIVILIZATION_SERVICE.update(civilization);
-                CivilizationManagerController.tableManager.updateObject(civilization1);
+                CIVILIZATION_SERVICE.update(civilization);
+                CivilizationManagerController.tableManager.updateObject(civilization);
                 getStage().close();
             } catch (SifinosException ex) {
             }
