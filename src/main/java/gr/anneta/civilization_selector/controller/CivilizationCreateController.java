@@ -3,6 +3,7 @@ package gr.anneta.civilization_selector.controller;
 import gr.anneta.civilization_selector.domain.Civilization;
 import gr.anneta.civilization_selector.service.CivilizationService;
 import gr.softaware.lib.javafx.exception.SifinosException;
+import gr.softaware.lib.javafx.stage.NullExceptionModal;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -32,7 +33,7 @@ public class CivilizationCreateController implements Initializable {
     private CheckBox archeryBool;
     @FXML
     private CheckBox stableBool;
-    
+
     @FXML
     void create(ActionEvent event) {
         Civilization civilization = new Civilization();
@@ -41,16 +42,16 @@ public class CivilizationCreateController implements Initializable {
         civilization.setBarracks(barracksBool.isSelected());
         civilization.setArchery(archeryBool.isSelected());
         civilization.setStable(stableBool.isSelected());
-        try {
-            Civilization civilization1 = CIVILIZATION_SERVICE.create(civilization);
-            CivilizationManagerController.tableManager.createObject(civilization1);
-            getStage().close();
-        } catch (SifinosException ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.CLOSE);
-            alert.initModality(Modality.APPLICATION_MODAL);
-            alert.setResizable(true);
-            alert.getDialogPane().setPrefWidth(450);
-            alert.showAndWait();
+        if (civilization == null || civilization.getTitle().trim().isEmpty() 
+                || civilization.getSpecialUnit().trim().isEmpty()) {
+            new NullExceptionModal().show();
+        } else {
+            try {
+                Civilization civilization1 = CIVILIZATION_SERVICE.create(civilization);
+                CivilizationManagerController.tableManager.createObject(civilization1);
+                getStage().close();
+            } catch (SifinosException ex) {
+            }
         }
     }
 
